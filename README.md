@@ -8,3 +8,4 @@ Art Game System Template
  * 각자 Github 계정을 만들고,
  * https://github.com/picxenk/ArtGameSystem 를 clone 합니다.
  * 저장소의 Settings에서 Pages를 설정할 수 있습니다.
+ * 하하하룰랄라
