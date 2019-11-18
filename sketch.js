@@ -2,7 +2,13 @@ let canvas;
 let canvasWidth = 600;
 let canvasHeight = 400;
 
-var GRAVITY = 0.2;
+var GRAVITY = 0.01;
+
+let bgImage;
+
+function preload(){
+  bgImage = loadImage('assets/Moon.jpg');
+}
 
 function setup() {
   canvas = createCanvas(canvasWidth, canvasHeight);
@@ -10,7 +16,7 @@ function setup() {
 }
 
 function draw() {
-  background(255, 255, 255);
+  image(bgImage, 0, 0, canvasWidth, canvasHeight);
 
   fill(0);
   textAlign(CENTER);
