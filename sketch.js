@@ -1,4 +1,7 @@
-//Creating animations from sprite sheets
+let canvas;
+let canvasWidth = 800;
+let canvasHeight = 255;
+
 var sprite_sheet_image;
 var sprite_sheet;
 var explode_animation;
