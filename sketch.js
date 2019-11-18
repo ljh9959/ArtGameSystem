@@ -20,7 +20,7 @@ function draw() {
 
   fill(255);
   textAlign(CENTER);
-  text('Click to create a new sprite', width/2, height-20);
+  text('Click to create Cuties', width/2, height-20);
 
   //the best way to organize sprites is to use a custom group (see Group class)
   //however, all sprites are automatically added to a default group allSprites
