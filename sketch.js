@@ -18,7 +18,7 @@ function setup() {
 function draw() {
   image(bgImage, 0, 0, canvasWidth, canvasHeight);
 
-  fill(0);
+  fill(255);
   textAlign(CENTER);
   text('Click to create a new sprite', width/2, height-20);
 
