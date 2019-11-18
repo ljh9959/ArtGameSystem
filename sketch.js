@@ -1,6 +1,7 @@
 let canvas;
 let canvasWidth = 800;
 let canvasHeight = 400;
+let zoomzoom = 1;
 
 var ghost;
 var bg;
@@ -44,11 +45,19 @@ function draw() {
 
   //a camera is created automatically at the beginning
 
-  //.5 zoom is zooming out (50% of the normal size)
-  if(mouseIsPressed)
-    camera.zoom = 0.5;
-  else
-    camera.zoom = 1;
+  if(keyDown('1')){
+    zoomzoom = 1;
+  }else if(keyDown('2')){
+    zoomzoom = 0.8;
+  }else if(keyDown('3')){
+    zoomzoom = 0.6;
+  }else if(keyDown('4')){
+    zoomzoom = 0.4;
+  }else if(keyDown('5')){
+    zoomzoom = 0.2;
+  }
+
+  camera.zoom = zoomzoom;
 
   //set the camera position to the ghost position
   camera.position.x = ghost.position.x;
