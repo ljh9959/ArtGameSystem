@@ -1,5 +1,5 @@
 let canvas;
-let canvasWidth = 600;
+let canvasWidth = 800;
 let canvasHeight = 400;
 
 var ghost;
