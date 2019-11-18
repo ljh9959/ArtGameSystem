@@ -16,7 +16,9 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(800, 225);
+  canvas = createCanvas(canvasWidth, canvasHeight);
+  canvas.position(windowWidth/2 - canvasWidth/2, 20);
+  //noCursor();
 }
 
 function draw() {
