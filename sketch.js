@@ -113,7 +113,6 @@ function draw() {
   }
 
   drawSprites();
-  checkGameOver();
 
 }
 
@@ -148,17 +147,6 @@ function keyPressed() {
     frog.position.y -= 5;
   }
 //    frog = createSprite(frog.position.x, frog.position.y, 20, 40)
-}
-
-
-function checkGameOver() {
-  if (frog.position.x <= 0 || width <= frog.position.x) {
-    fill(255, 0, 0);
-    textSize(60);
-    textAlign(CENTER);
-    text("GAME OVER", width/2, height/2);
-
-  }
 }
 
 
