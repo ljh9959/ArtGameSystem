@@ -66,15 +66,31 @@ function draw() {
 
   if (frog.bounce(car1)) {
     sound_hit.play();
+    car1.setVelocity(0, 0);
+    car2.setVelocity(0, 0);
+    car3.setVelocity(0, 0);
+    car4.setVelocity(0, 0);
   }
   if (frog.bounce(car2)) {
     sound_hit.play();
+    car1.setVelocity(0, 0);
+    car2.setVelocity(0, 0);
+    car3.setVelocity(0, 0);
+    car4.setVelocity(0, 0);
   }
   if (frog.bounce(car3)) {
     sound_hit.play();
+    car1.setVelocity(0, 0);
+    car2.setVelocity(0, 0);
+    car3.setVelocity(0, 0);
+    car4.setVelocity(0, 0);
   }
   if (frog.bounce(car4)) {
     sound_hit.play();
+    car1.setVelocity(0, 0);
+    car2.setVelocity(0, 0);
+    car3.setVelocity(0, 0);
+    car4.setVelocity(0, 0);
   }
 
   // 충돌 시 사운드 효과에 대한 또 다른 방법
