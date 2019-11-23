@@ -7,6 +7,7 @@ let car1,car2,car3,car4
 let carV1, carV2, carV3, carV4
 let goal;
 let sound_hit;
+let timeStop = 0;
 
 function preload() {
   sound_hit = loadSound('Hit_Hurt.wav');
@@ -71,9 +72,36 @@ function draw() {
     car3.setVelocity(0, 0);
     car4.setVelocity(0, 0);
 
-    frog.position.x = (frog.position.x)-10;
-    frog.position.y = frog.position.y;
+    timeStop = 1;
   }
+
+  if(timeStop == 1)
+  {
+    frog.position.x = width/2;
+
+    fill(100, 100, 100);
+    textSize(20);
+    textAlign(CENTER);
+    text("Watch out!!!", width/2+100, height/2);
+  }
+
+  if(frog.position.y <= height/2 - 50)
+  {
+    timeStop = 0;
+    frog.position.x = width/2;
+
+    carV1 = random(0.5, 1);
+    carV3 = random(0.5, 1);
+    carV2 = random(-1, -0.5);
+    carV4 = random(-1, -0.5);
+
+    car1.setVelocity(carV1, 0);
+    car3.setVelocity(carV3, 0);
+    car2.setVelocity(carV2, 0);
+    car4.setVelocity(carV4, 0);
+  }
+
+
 
   // 충돌 시 사운드 효과에 대한 또 다른 방법
   // frog.collide(car1, playHitSound);
@@ -91,17 +119,17 @@ function draw() {
 
 
 function resetGame() {
-  frog = createSprite(width/2, height-30, 20, 40);
+  frog = createSprite(10, height-30, 20, 20);
   goal = createSprite(width/2, 0, width, 4);
   car1 = createSprite(0, height/2-25, 60, 30);
   car3 = createSprite(0- width/2, height/2-25, 60, 30);
   car2 = createSprite(width, height/2+25, 60, 30);
   car4 = createSprite(width+width/2, height/2+25, 60, 30);
 
-  carV1 = random(0.5, 1), 0
-  carV3 = random(0.5, 1), 0
-  carV2 = random(-1, -0.5), 0
-  carV4 = random(-1, -0.5), 0
+  carV1 = random(0.5, 1);
+  carV3 = random(0.5, 1);
+  carV2 = random(-1, -0.5);
+  carV4 = random(-1, -0.5);
 
   car1.setVelocity(carV1, 0);
   car3.setVelocity(carV3, 0);
@@ -111,9 +139,15 @@ function resetGame() {
 
 
 function keyPressed() {
-  if (keyCode == UP_ARROW) {
-    frog.position.y -= 10;
+  if(frog.position.x < width/2)
+  {
+    frog.position.x += 5;
   }
+  else if(frog.position.x >= width/2)
+  {
+    frog.position.y -= 5;
+  }
+//    frog = createSprite(frog.position.x, frog.position.y, 20, 40)
 }
 
 
