@@ -45,21 +45,21 @@ function draw() {
 //차간 거리 조정(충돌 방지)
   if (car1.position.x - car3.position.x <= 100 && car1.position.x - car3.position.x >= 10)
   {
-    carV3 -= 0.1
+    carV3 -= 0.1;
     car3.setVelocity(carV1, 0);
   }if (car3.position.x - car1.position.x <= 100 && car3.position.x - car1.position.x >= 10)
   {
-    carV1 -= 0.1
+    carV1 -= 0.1;
     car1.setVelocity(carV3, 0);
   }
 
-  if (car2.position.x - car4.position.x <= 100 && car2.position.x - car4.position.x >= 10)
+  if (car4.position.x - car2.position.x <= 100 && car4.position.x - car2.position.x >= 10)
   {
-    carV4 += 0.1
+    carV4 += 0.1;
     car4.setVelocity(carV4, 0);
-  }if (car4.position.x - car2.position.x <= 100 && car4.position.x - car2.position.x >= 10)
+  }if (car2.position.x - car4.position.x <= 100 && car2.position.x - car4.position.x >= 10)
   {
-    carV2 += 0.1
+    carV2 += 0.1;
     car2.setVelocity(carV2, 0);
   }
 
