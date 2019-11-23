@@ -55,11 +55,11 @@ function draw() {
 
   if (car2.position.x - car4.position.x <= 100 && car2.position.x - car4.position.x >= 10)
   {
-    carV4 -= 0.1
+    carV4 += 0.1
     car4.setVelocity(carV4, 0);
   }if (car4.position.x - car2.position.x <= 100 && car4.position.x - car2.position.x >= 10)
   {
-    carV2 -= 0.1
+    carV2 += 0.1
     car2.setVelocity(carV2, 0);
   }
 
