@@ -9,7 +9,7 @@ let goal;
 let sound_hit;
 
 function preload() {
-  sound_hit = loadSound('hit.wav');
+  sound_hit = loadSound('Hit_Hurt.wav');
 }
 
 function setup() {
