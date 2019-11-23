@@ -71,7 +71,7 @@ function draw() {
     car3.setVelocity(0, 0);
     car4.setVelocity(0, 0);
 
-    frog.position.x = frog.position.x-10;
+    frog.position.x = (frog.position.x)-10;
     frog.position.y = frog.position.y;
   }
 
@@ -81,7 +81,7 @@ function draw() {
 
 
   if (frog.overlap(goal)) {
-    nextLevel();
+    comeHome();
   }
 
   drawSprites();
@@ -128,9 +128,11 @@ function checkGameOver() {
 }
 
 
-function nextLevel() {
-  frog.position.x = width/2;
-  frog.position.y = height-30;
+function comeHome() {
+    fill(100, 100, 100);
+    textSize(40);
+    textAlign(CENTER);
+    text("I'm Home\n<(^^)>", width/2, height/2);
 }
 
 
