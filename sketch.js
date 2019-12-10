@@ -7,8 +7,8 @@ var ghost;
 var bg;
 var frame;
 
-var SCENE_W = 3200;
-var SCENE_H = 1600;
+var SCENE_W = 6400;
+var SCENE_H = 3200;
 
 function setup() {
   canvas = createCanvas(canvasWidth, canvasHeight);
