@@ -10,6 +10,7 @@ var obj;
 
 var bgm;
 var music01;
+var meow;
 
 var SCENE_W = 6400;
 var SCENE_H = 3200;
@@ -36,7 +37,7 @@ function preload() {
 
   cats = new Group();
 
-  for (var i = 0; i < 3; i++) {
+  for (var i = 0; i < 6; i++) {
     var cat = createSprite(random(-width, SCENE_W + width), random(-height, SCENE_H + height));
     cat.addAnimation('normal', 'assets/sleepingCat.png');
     cats.add(cat);
@@ -51,6 +52,7 @@ function preload() {
 
   bgm = loadSound("assets/soundtrack.mp3");
   music01 = loadSound("assets/911.mp3");
+  meow = loadSound("assets/CatMeow.wav");
   frame = loadImage('assets/frame.png');
 
 }
@@ -118,6 +120,11 @@ function draw() {
   drawSprite(ghost);
 
   ghost.collide(cats);
+
+  if (ghost.collide(cats))
+  {
+    meow.play();
+  }
 
   if (ghost.overlap(obj)) {
     if (bgmOnOff == 1) {
