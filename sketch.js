@@ -49,6 +49,7 @@ function setup() {
   canvas.position(windowWidth / 2 - canvasWidth / 2, 20);
   bgm.play();
   bgm.loop();
+  bgmOnOff = 1;
   zoomzoom = 0.4;
 }
 
@@ -61,7 +62,15 @@ function draw() {
   ghost.velocity.y = (camera.mouseY - ghost.position.y) / 20;
 
   if (ghost.overlap(obj)) {
-    bgm.stop();
+    if (bgmOnOff == 1) {
+      bgm.stop();
+      bgmOnOff = 0;
+    }
+  }else{
+    if (bgmOnOff == 0) {
+      bgm.play();
+      bgmOnOff = 1;
+    }
   }
 
   //a camera is created automatically at the beginning
