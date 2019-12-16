@@ -41,6 +41,7 @@ function setup() {
   canvas = createCanvas(canvasWidth, canvasHeight);
   canvas.position(windowWidth / 2 - canvasWidth / 2, 20);
   BGM_on();
+  zoomzoom = 0.4;
 }
 
 function draw() {
