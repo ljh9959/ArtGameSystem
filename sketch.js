@@ -7,12 +7,12 @@ var ghost;
 var bg;
 var frame;
 
+var bgm;
+
 var SCENE_W = 6400;
 var SCENE_H = 3200;
 
-function setup() {
-  canvas = createCanvas(canvasWidth, canvasHeight);
-  canvas.position(windowWidth/2 - canvasWidth/2, 20);
+function preload() {
 
   ghost = createSprite(400, 200, 50, 100);
 
@@ -24,36 +24,44 @@ function setup() {
   bg = new Group();
 
   //create some background for visual reference
-  for(var i=0; i<80; i++)
-  {
+  for (var i = 0; i < 80; i++) {
     //create a sprite and add the 3 animations
-    var rock = createSprite(random(-width, SCENE_W+width), random(-height, SCENE_H+height));
+    var rock = createSprite(random(-width, SCENE_W + width), random(-height, SCENE_H + height));
     //cycles through rocks 0 1 2
-    rock.addAnimation('normal', 'assets/rocks'+i%3+'.png');
+    rock.addAnimation('normal', 'assets/rocks' + i % 3 + '.png');
     bg.add(rock);
   }
 
+  bgm = loadSound("assets/soundtrack.mp3");
   frame = loadImage('assets/frame.png');
+
+}
+
+function setup() {
+  canvas = createCanvas(canvasWidth, canvasHeight);
+  canvas.position(windowWidth / 2 - canvasWidth / 2, 20);
+  BGM_on();
 }
 
 function draw() {
   background(255, 255, 255);
 
+
   //mouse trailer, the speed is inversely proportional to the mouse distance
-  ghost.velocity.x = (camera.mouseX-ghost.position.x)/20;
-  ghost.velocity.y = (camera.mouseY-ghost.position.y)/20;
+  ghost.velocity.x = (camera.mouseX - ghost.position.x) / 20;
+  ghost.velocity.y = (camera.mouseY - ghost.position.y) / 20;
 
   //a camera is created automatically at the beginning
 
-  if(keyDown('1')){
+  if (keyDown('1')) {
     zoomzoom = 1;
-  }else if(keyDown('2')){
+  } else if (keyDown('2')) {
     zoomzoom = 0.8;
-  }else if(keyDown('3')){
+  } else if (keyDown('3')) {
     zoomzoom = 0.6;
-  }else if(keyDown('4')){
+  } else if (keyDown('4')) {
     zoomzoom = 0.4;
-  }else if(keyDown('5')){
+  } else if (keyDown('5')) {
     zoomzoom = 0.2;
   }
 
@@ -64,13 +72,13 @@ function draw() {
   camera.position.y = ghost.position.y;
 
   //limit the ghost movements
-  if(ghost.position.x < 0)
+  if (ghost.position.x < 0)
     ghost.position.x = 0;
-  if(ghost.position.y < 0)
+  if (ghost.position.y < 0)
     ghost.position.y = 0;
-  if(ghost.position.x > SCENE_W)
+  if (ghost.position.x > SCENE_W)
     ghost.position.x = SCENE_W;
-  if(ghost.position.y > SCENE_H)
+  if (ghost.position.y > SCENE_H)
     ghost.position.y = SCENE_H;
 
   //draw the scene
@@ -81,7 +89,7 @@ function draw() {
   noStroke();
   fill(0, 0, 0, 20);
   //shadow
-  ellipse(ghost.position.x, ghost.position.y+90, 80, 30);
+  ellipse(ghost.position.x, ghost.position.y + 90, 80, 30);
   //character on the top
   drawSprite(ghost);
 
@@ -90,4 +98,8 @@ function draw() {
   //the absolute 0,0 (try to see what happens if you don't turn it off
   camera.off();
   image(frame, 0, 0);
+}
+
+function BGM_on() {
+  bgm.play();
 }
