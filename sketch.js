@@ -34,11 +34,20 @@ function preload() {
     bg.add(rock);
   }
 
+  cats = new Group();
+
+  for (var i = 0; i < 3; i++) {
+    var cat = createSprite(random(-width, SCENE_W + width), random(-height, SCENE_H + height));
+    cat.addAnimation('normal', 'assets/sleepingCat.png');
+    cats.add(cat);
+  }
+
   obj = new Group();
 
   var headphone = createSprite(random(-width, SCENE_W + width), random(-height, SCENE_H + height));
   headphone.addAnimation('normal', 'assets/headphone.png');
   obj.add(headphone);
+
 
   bgm = loadSound("assets/soundtrack.mp3");
   music01 = loadSound("assets/911.mp3");
@@ -63,19 +72,6 @@ function draw() {
   ghost.velocity.x = (camera.mouseX - ghost.position.x) / 20;
   ghost.velocity.y = (camera.mouseY - ghost.position.y) / 20;
 
-  if (ghost.overlap(obj)) {
-    if (bgmOnOff == 1) {
-      bgm.stop();
-      music01.play();
-      bgmOnOff = 0;
-    }
-  } else {
-    if (bgmOnOff == 0) {
-      bgm.play();
-      music01.stop();
-      bgmOnOff = 1;
-    }
-  }
 
   //a camera is created automatically at the beginning
 
@@ -110,6 +106,7 @@ function draw() {
   //draw the scene
   //rocks first
   drawSprites(bg);
+  drawSprites(cats);
   drawSprites(obj);
 
   //shadow using p5 drawing
@@ -119,6 +116,22 @@ function draw() {
   ellipse(ghost.position.x, ghost.position.y + 90, 80, 30);
   //character on the top
   drawSprite(ghost);
+
+  ghost.collide(cats);
+
+  if (ghost.overlap(obj)) {
+    if (bgmOnOff == 1) {
+      bgm.stop();
+      music01.play();
+      bgmOnOff = 0;
+    }
+  } else {
+    if (bgmOnOff == 0) {
+      bgm.play();
+      music01.stop();
+      bgmOnOff = 1;
+    }
+  }
 
   //I can turn on and off the camera at any point to restore
   //the normal drawing coordinates, the frame will be drawn at
