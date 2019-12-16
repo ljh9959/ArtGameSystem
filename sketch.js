@@ -6,6 +6,7 @@ let zoomzoom = 1;
 var ghost;
 var bg;
 var frame;
+var obj;
 
 var bgm;
 
@@ -32,6 +33,12 @@ function preload() {
     bg.add(rock);
   }
 
+  obj = new Group();
+
+  var headphone = createSprite(random(-width, SCENE_W + width), random(-height, SCENE_H + height));
+  headphone.addAnimation('normal', 'assets/headphone.png');
+  obj.add(headphone);
+
   bgm = loadSound("assets/soundtrack.mp3");
   frame = loadImage('assets/frame.png');
 
@@ -40,7 +47,8 @@ function preload() {
 function setup() {
   canvas = createCanvas(canvasWidth, canvasHeight);
   canvas.position(windowWidth / 2 - canvasWidth / 2, 20);
-  BGM_on();
+  bgm.play();
+  bgm.loop();
   zoomzoom = 0.4;
 }
 
@@ -51,6 +59,10 @@ function draw() {
   //mouse trailer, the speed is inversely proportional to the mouse distance
   ghost.velocity.x = (camera.mouseX - ghost.position.x) / 20;
   ghost.velocity.y = (camera.mouseY - ghost.position.y) / 20;
+
+  if (ghost.overlap(obj)) {
+    bgm.stop();
+  }
 
   //a camera is created automatically at the beginning
 
@@ -85,6 +97,7 @@ function draw() {
   //draw the scene
   //rocks first
   drawSprites(bg);
+  drawSprites(obj);
 
   //shadow using p5 drawing
   noStroke();
@@ -99,8 +112,4 @@ function draw() {
   //the absolute 0,0 (try to see what happens if you don't turn it off
   camera.off();
   image(frame, 0, 0);
-}
-
-function BGM_on() {
-  bgm.play();
 }
