@@ -9,6 +9,7 @@ var frame;
 var obj;
 
 var bgm;
+var music01;
 
 var SCENE_W = 6400;
 var SCENE_H = 3200;
@@ -40,6 +41,7 @@ function preload() {
   obj.add(headphone);
 
   bgm = loadSound("assets/soundtrack.mp3");
+  music01 = loadSound("assets/911.mp3");
   frame = loadImage('assets/frame.png');
 
 }
@@ -64,11 +66,13 @@ function draw() {
   if (ghost.overlap(obj)) {
     if (bgmOnOff == 1) {
       bgm.stop();
+      music01.play();
       bgmOnOff = 0;
     }
-  }else{
+  } else {
     if (bgmOnOff == 0) {
       bgm.play();
+      music01.stop();
       bgmOnOff = 1;
     }
   }
