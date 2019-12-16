@@ -23,6 +23,7 @@ function preload() {
   myAnimation.offY = 18;
 
   ghost.addAnimation('moving', 'assets/ghost_walk0001.png', 'assets/ghost_walk0004.png');
+  ghost.addAnimation('sleep', 'assets/box0001.png', 'assets/box0003.png');
 
   bg = new Group();
 
@@ -48,6 +49,12 @@ function preload() {
   var headphone = createSprite(random(-width, SCENE_W + width), random(-height, SCENE_H + height));
   headphone.addAnimation('normal', 'assets/headphone.png');
   obj.add(headphone);
+
+  newbed = new Group();
+
+  var bed = createSprite(random(-width, SCENE_W + width), random(-height, SCENE_H + height));
+  bed.addAnimation('normal', 'assets/bed.png');
+  newbed.add(bed);
 
 
   bgm = loadSound("assets/soundtrack.mp3");
@@ -110,6 +117,7 @@ function draw() {
   drawSprites(bg);
   drawSprites(cats);
   drawSprites(obj);
+  drawSprites(newbed);
 
   //shadow using p5 drawing
   noStroke();
@@ -121,8 +129,7 @@ function draw() {
 
   ghost.collide(cats);
 
-  if (ghost.collide(cats))
-  {
+  if (ghost.collide(cats)) {
     meow.play();
   }
 
@@ -140,6 +147,11 @@ function draw() {
     }
   }
 
+  if (ghost.overlap(newbed)) {
+    ghost.changeAnimation('sleep');
+  } else {
+    ghost.changeAnimation('floating');
+  }
   //I can turn on and off the camera at any point to restore
   //the normal drawing coordinates, the frame will be drawn at
   //the absolute 0,0 (try to see what happens if you don't turn it off
