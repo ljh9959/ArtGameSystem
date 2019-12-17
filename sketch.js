@@ -53,7 +53,7 @@ function preload() {
   newbed = new Group();
 
   var bed = createSprite(random(-width, SCENE_W + width), random(-height, SCENE_H + height));
-  bed.addAnimation('normal', 'assets/bed.png');
+  bed.addAnimation('normal', 'assets/Bed.png');
   newbed.add(bed);
 
 
